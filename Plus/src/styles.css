@@ -1,0 +1,181 @@
+body {
+    text-align: center;
+    font-family:'Gothic A1', sans-serif;
+}
+
+.container {
+    max-width: 1000px;
+    /*border: 2px solid black;*/
+    display: grid;
+    grid-template-columns: 42% 58%;
+    margin: 20px;
+}
+
+.right-column {
+    position: relative;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+img {
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+h1,
+h2,
+h4 {
+    position: absolute;
+}
+
+h1 {
+    bottom: 10px;
+    right: 30px;
+    color: white;
+    font-size: 70px;
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+    top: 20px;
+    right: 30px;
+    font-size: 35px;
+}
+
+h4 {
+    top: 65px;
+    right: 30px;
+    font-size: 20px;
+    opacity: 0.8;
+}
+
+.wind-humidity {
+    left: 30px;
+    color: white;
+    position: absolute;
+    font-size: 18px;
+    bottom: 160px;
+    list-style: none;
+    padding: 0;
+}
+
+.time, .date {
+    left: 30px;
+    color: white;
+    position: absolute;
+    font-size: 18px;   
+}
+
+.time {
+    bottom: 35px;
+}
+
+.date {
+    bottom: 10px;   
+}
+
+
+.left-column {
+    background-color: rgb(238, 238, 238);
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+form {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.search-field {
+    font-size: 18px;
+    margin-right: 15px;
+    border-radius: 5px;
+    float: left;
+    width: 200px;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: black;
+}
+
+h3 {
+    margin-top: 25px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+    text-transform: capitalize;
+    text-shadow: 1px 1px 2px #1C6758;
+}
+
+.grid-container {
+    display: grid;
+    padding: 15px;
+    margin-bottom: -10px;
+}
+
+.day {
+    font-weight: 600;
+    color: #1C6758;
+    font-size: 17px;
+}
+
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 1em;
+    border-radius: 8px;
+    height: 75px;
+}
+
+#grid-temp {
+    font-weight: bold;
+}
+
+.current-city {
+    margin-bottom: 13px;   
+}
+
+.current-city, 
+.search-button {
+    font-family: 'Gothic A1', sans-serif;
+    color: white;
+    background-color: #3D8361;
+    border-color: #3D8361;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 0;
+    transition: background-color 0.5s ease-out;
+    padding: 7.5px 13px;
+}
+
+.current-city:hover, 
+.search-button:hover {
+    background-color: #1C6758;
+    border-color: #1C6758;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color:rgba(255, 255, 255, 0.8);
+}
+
+#celsius,
+#fahrenheit,
+.dash {
+    vertical-align: super;
+    font-weight: 300;
+    font-size: 30px;
+} 
+
+#temperature {
+    font-size: 60px;
+    font-weight: 300;
+}
