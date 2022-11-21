@@ -158,13 +158,18 @@ h3 {
     border-color: #1C6758;
 }
 
-a {
+h1 a {
     color: white;
     text-decoration: none;
 }
 
-a:hover {
+h1 a:hover {
     color:rgba(255, 255, 255, 0.8);
+}
+
+.git-link {
+    text-align: left;
+    margin-left: 33px;
 }
 
 #celsius,
