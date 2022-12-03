@@ -1,40 +1,20 @@
-/*let weather = {
-  paris: {
-    temp: 19.7,
-    humidity: 80
-  },
-  tokyo: {
-    temp: 17.3,
-    humidity: 50
-  },
-  lisbon: {
-    temp: 30.2,
-    humidity: 20
-  },
-  "san francisco": {
-    temp: 20.9,
-    humidity: 100
-  },
-  oslo: {
-    temp: -5,
-    humidity: 20
-  }
-};
-
-let city = prompt("Enter a city?");
-city = city.toLowerCase();
-if (weather[city] !== undefined) {
-    let temp = weather[city].temp;
-    let humidity = weather[city].humidity;
-    let tempF = weather[city].temp * 1.8 + 32;
-    alert(`It is currently ${Math.round(temp)}°C (${Math.round(tempF)}°F) in ${city} with a humidity of ${humidity}%`);
-} else {
-    alert(`Sorry, we don't know the weather for this city, try going to https://www.google.com/search?q=weather+${city}`);
-}*/
-
 let now = new Date();
 let time = document.querySelector(".time");
-time.innerHTML = now.getHours() + ":" + now.getMinutes();
+//time.innerHTML = now.getHours() + ":" + now.getMinutes();
+function formatTime(date) {
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  if (minutes < 10) {
+  minutes = `0${minutes}`
+}
+if (hours < 10) {
+  hours = `0${hours}`
+}
+  let formattedTime = `${hours}:${minutes}`;
+  return formattedTime;
+}
+time.innerHTML = formatTime(now);
+
 let date = document.querySelector(".date");
 function formatDate(date) {
   let days = [
@@ -63,25 +43,26 @@ function formatDate(date) {
   let currentDay = days[date.getDay()];
   let currentMonth = months[date.getMonth()];
   let currentDate = date.getDate();
-
   let formattedDate = `${currentDay}, ${currentMonth} ${currentDate}`;
   return formattedDate;
 }
 date.innerHTML = formatDate(now);
 
+let celsiusTemperature = null;
   
 function convertTemperatureC(event) {
   event.preventDefault();
-  let convert = document.querySelector("#temperature");
-  convert.innerHTML = 23;
+  let currentTemperature = document.querySelector("#temperature");
+  currentTemperature.innerHTML = Math.round(celsiusTemperature);
 }
 let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", convertTemperatureC);
 
 function convertTemperatureF(event) {
   event.preventDefault();
-  let convert = document.querySelector("#temperature");
-  convert.innerHTML = 73;
+  let currentTemperature = document.querySelector("#temperature");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  currentTemperature.innerHTML = Math.round(fahrenheitTemperature);
 }
 let fahrenheit = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", convertTemperatureF);
@@ -97,10 +78,13 @@ fahrenheit.addEventListener("click", convertTemperatureF);
 }*/
 
 let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+let apiLink = `https://api.openweathermap.org/data/2.5/weather?q=Toronto&appid=${apiKey}&units=metric`
+axios.get(apiLink).then(showWeather);
 
 function showWeather(response) {
   let currentTemperature = document.querySelector("#temperature");
-  let temperature = Math.round(response.data.main.temp);
+  celsiusTemperature = response.data.main.temp;
+  let temperature = Math.round(celsiusTemperature);
   currentTemperature.innerHTML = `${temperature}`;
   
   let city = document.querySelector("h2");
@@ -114,6 +98,13 @@ function showWeather(response) {
 
   let windSpeed = document.querySelector("#wind-speed-value");
   windSpeed.innerHTML = `${response.data.wind.speed}`;
+
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function citySearch(event) {
