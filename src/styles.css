@@ -4,11 +4,12 @@ body {
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 850px;
     /*border: 2px solid black;*/
     display: grid;
     grid-template-columns: 42% 58%;
     margin: 20px;
+    padding: 0;
 }
 
 .right-column {
@@ -105,7 +106,7 @@ h3 {
     margin-top: -15px;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    font-size: 25px;
+    font-size: 20px;
     text-transform: capitalize;
 }
 
